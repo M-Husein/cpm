@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { Layout, Menu, Button } from 'ant-design-vue';
 
+const route = useRoute();
 const currentUser = useAuthUser();
 const isAdmin = useAdmin();
 const { logout } = useAuth();
@@ -31,38 +32,40 @@ async function onLogoutClick() {
       <Menu
         theme="light"
         mode="horizontal"
-        class="bg-transparent flex items-center"
+        :selectedKeys="[route.path]"
+        class="bg-transparent flex flex-nowrap items-center"
       >
         <Menu.Item key="logo" class="!mr-auto">
           <NuxtLink
             to="/" 
-            class="text-gray-700 font-bold text-lg no-underline" 
+            class="font-bold text-lg no-underline" 
             translate="no"
           >
-            U-Management
+            CPM
           </NuxtLink>
         </Menu.Item>
 
         <template v-if="currentUser">
-          <Menu.Item key="1">
+          <Menu.Item key="/projects">
             <NuxtLink 
-              to="/projects" 
-              class="text-gray-700 no-underline"
+              to="/projects"
+              class="no-underline"
             >
               Projects
             </NuxtLink>
           </Menu.Item>
-          <Menu.Item key="2">
+          <Menu.Item key="/users">
             <NuxtLink 
               v-if="isAdmin" 
-              to="/users" 
-              class="text-gray-700 no-underline"
+              to="/users"
+              class="no-underline"
             >
               Users
             </NuxtLink>
           </Menu.Item>
           <Menu.Item key="3">
             <Button
+              class="max-md_px-2"
               :disabled="form.pending"
               @click="onLogoutClick"
             >

@@ -4,7 +4,7 @@ import { SmileTwoTone } from '@ant-design/icons-vue';
 
 const currentUser = useAuthUser();
 
-const title = currentUser.value?.name ? "Hi, " + currentUser.value.name : "Welcome to U-Management";
+const title = currentUser.value?.name ? "Hi, " + currentUser.value.name : "Welcome to CPM";
 </script>
 
 <template>
