@@ -1,7 +1,5 @@
 # Construction Project Management System
 
-Look at the [nuxt documentation](https://nuxt.com/) to learn more.
-
 ## Features
 
 - Login with email and password.
@@ -51,3 +49,23 @@ Locally preview production build:
 ```bash
 npm run preview
 ```
+
+## Available user
+```json
+[
+  {
+    "name": "Admin",
+    "email": "admin@email.com"
+  }, 
+  {
+    "name": "User 1",
+    "email": "user1@email.com"
+  }, 
+  {
+    "name": "User 2",
+    "email": "user2@email.com"
+  }
+]
+```
+
+Look at the [nuxt documentation](https://nuxt.com/) to learn more.

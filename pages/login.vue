@@ -26,7 +26,6 @@ async function onLoginClick() {
     await login(form.data.email, form.data.password, form.data.rememberMe);
     await navigateTo("/");
   } catch (error: any) {
-    // console.error(error);
     if (error.data.message) form.error = error.data.message;
   } finally {
     form.pending = false;
