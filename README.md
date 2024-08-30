@@ -1,13 +1,13 @@
 # Construction Project Management System
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+Look at the [nuxt documentation](https://nuxt.com/) to learn more.
 
 ## Features
 
 - Login with email and password.
 - Guest, private, admin pages.
 - Active session on page reload.
-- Projects resources (Dummy).
+- Projects resources (dummy).
 
 ## Setup
 
