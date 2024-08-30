@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Button } from 'ant-design-vue';
+import { Layout, Menu, Button } from 'ant-design-vue';
 
 const currentUser = useAuthUser();
 const isAdmin = useAdmin();
@@ -24,47 +24,56 @@ async function onLogoutClick() {
 </script>
 
 <template>
-  <header class="bg-slate-200 sticky top-0 z-50 shadow-sm">
-    <div class="py-2 px-4 mx-auto w-full max-w-5xl">
-      <nav class="flex items-center gap-4">
-        <NuxtLink 
-          to="/" 
-          class="text-gray-700 font-bold text-lg no-underline" 
-          translate="no"
-        >
-          U-Management
-        </NuxtLink>
+  <Layout.Header 
+    class="w-full bg-slate-200 sticky top-0 z-50 shadow-sm"
+  >
+    <nav class="max-w-5xl mx-auto">
+      <Menu
+        theme="light"
+        mode="horizontal"
+        class="bg-transparent flex items-center"
+      >
+        <Menu.Item key="logo" class="!mr-auto">
+          <NuxtLink
+            to="/" 
+            class="text-gray-700 font-bold text-lg no-underline" 
+            translate="no"
+          >
+            U-Management
+          </NuxtLink>
+        </Menu.Item>
 
-        <div class="ml-auto flex items-center gap-6">
-          <template v-if="currentUser">
+        <template v-if="currentUser">
+          <Menu.Item key="1">
             <NuxtLink 
               to="/projects" 
-              activeClass="underline"
-              class="text-gray-700 [&:not(.underline)&:not(:hover)]_no-underline underline-offset-8"
+              class="text-gray-700 no-underline"
             >
               Projects
             </NuxtLink>
+          </Menu.Item>
+          <Menu.Item key="2">
             <NuxtLink 
               v-if="isAdmin" 
               to="/users" 
-              activeClass="underline"
-              class="text-gray-700 [&:not(.underline)&:not(:hover)]_no-underline underline-offset-8"
+              class="text-gray-700 no-underline"
             >
               Users
             </NuxtLink>
-            
+          </Menu.Item>
+          <Menu.Item key="3">
             <Button
               :disabled="form.pending"
               @click="onLogoutClick"
             >
               Logout
             </Button>
-          </template>
-          <template v-else>
-            <Button @click="navigateTo('/login')">Login</Button>
-          </template>
-        </div>
-      </nav>
-    </div>
-  </header>
+          </Menu.Item>
+        </template>
+        <template v-else>
+          <Button @click="navigateTo('/login')">Login</Button>
+        </template>
+      </Menu>
+    </nav>
+  </Layout.Header>
 </template>
